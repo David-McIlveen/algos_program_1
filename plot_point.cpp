@@ -40,7 +40,6 @@ bool line::isAlone(point lone, point* others, int n, int ignore, int igorePlus, 
     point_status lone_status = getPointStatus(lone);
     if(lone_status == equal) return true;
 
-    point_status value = equal;
     for (int i = 0; i < n; i++){
         if(i == ignore || i == igorePlus || i == ignoreMinus) continue;
         point_status this_status = getPointStatus(others[i]);

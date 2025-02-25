@@ -93,11 +93,9 @@ void algorithm(point* points, int point_count, int polygon_num, string polygon_n
 
     // For each point in the polygon...
     for (int i = 0; i < point_count && is_convex; i++){
-        point two_plus = points[bounded_mod_negative(i + 2, point_count)];
         point one_plus = points[bounded_mod_negative(i + 1, point_count)];
         point lone_point = points[bounded_mod_negative(i, point_count)];
         point one_minus = points[bounded_mod_negative(i - 1, point_count)];
-        point two_minus = points[bounded_mod_negative(i - 2, point_count)];
         line check = line(one_plus, one_minus);
         is_convex = check.isAlone(lone_point, points, point_count, i, bounded_mod_negative(i - 1, point_count), bounded_mod_negative(i + 1, point_count));
         // cout << " - For " << polygon_name << " at point [" << i << "] it is determined to be convex? :" << is_convex << endl;
