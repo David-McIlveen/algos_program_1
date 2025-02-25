@@ -36,16 +36,18 @@ line::line(point a, point b){
     }
 }
 
-bool line::isAlone(point lone, point otherA, point otherB){
+bool line::isAlone(point lone, point* others, int n, int ignore, int igorePlus, int ignoreMinus){
     point_status lone_status = getPointStatus(lone);
-    point_status A_status = getPointStatus(otherA);
-    point_status B_status = getPointStatus(otherB);
-    //If the lone point is on the line, we can't determine if it's convex or concave
-    if(lone_status == equal) return A_status == B_status;
-    //If A or B are on the line when the lone point isn't then it's concave
-    if((A_status == equal || B_status == equal)) return false;
-    //A and B are the same, but L should be diffrent.
-    return lone_status != A_status && A_status == B_status;
+    if(lone_status == equal) return true;
+
+    point_status value = equal;
+    for (int i = 0; i < n; i++){
+        if(i == ignore || i == igorePlus || i == ignoreMinus) continue;
+        point_status this_status = getPointStatus(others[i]);
+        if(this_status == equal) continue;
+        if(lone_status == this_status) return false;
+    }
+    return true;
 }
 
 point_status line::getPointStatus(point a){

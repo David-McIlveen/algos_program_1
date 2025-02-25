@@ -29,7 +29,7 @@ class line{
         // Determines if the lone point is on one side of the line and otherA and otherB on are on the other.
         // True if A and B are on the otherside of the line of L
         // False if A or B is equal to the line or on the same side as L
-        bool isAlone(point lone, point otherA, point otherB);
+        bool isAlone(point lone, point* others, int n, int ignore, int igorePlus, int ignoreMinus);
     private:
         point_status getPointStatus(point a);
         // Is A less, greater or equal to be within a given precision ?
