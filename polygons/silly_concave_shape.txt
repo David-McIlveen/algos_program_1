@@ -1,0 +1,7 @@
+Strange Concave Shape
+0 0
+4 0
+3 2
+4 4
+2 6
+0 5

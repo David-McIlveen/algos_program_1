@@ -1,0 +1,1 @@
+g++ -std=c++17 main.cpp plot_point.cpp point_loader.cpp -I . -Wall -o a
