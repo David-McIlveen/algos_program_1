@@ -41,7 +41,7 @@ bool line::isAlone(point lone, point otherA, point otherB){
     point_status A_status = getPointStatus(otherA);
     point_status B_status = getPointStatus(otherB);
     //If the lone point is on the line, we can't determine if it's convex or concave
-    if(lone_status == equal) return true;
+    if(lone_status == equal) return A_status == B_status;
     //If A or B are on the line when the lone point isn't then it's concave
     if((A_status == equal || B_status == equal)) return false;
     //A and B are the same, but L should be diffrent.
